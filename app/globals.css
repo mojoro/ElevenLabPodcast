@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f0e8;
+  --foreground: #112030;
+  --paper: rgba(255, 250, 243, 0.84);
+  --paper-strong: rgba(255, 250, 243, 0.94);
+  --line: rgba(17, 32, 48, 0.12);
+  --accent: #ff7a30;
+  --accent-deep: #d95d18;
+  --teal: #176d69;
+  --muted: #61707f;
+  --shadow: 0 30px 80px rgba(24, 39, 58, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 48, 0.22), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(23, 109, 105, 0.24), transparent 38%),
+    linear-gradient(135deg, #f5ecdf 0%, #f7f3eb 50%, #dcebe7 100%);
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(255, 122, 48, 0.22);
+}
+
+.glass-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.glass-card-strong {
+  background: var(--paper-strong);
+  border: 1px solid rgba(17, 32, 48, 0.12);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+.label-mono {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.wave-grid {
+  background-image:
+    linear-gradient(rgba(17, 32, 48, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 32, 48, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center;
+}
+
+.how-slide {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(17, 32, 48, 0.1);
+  background:
+    radial-gradient(circle at top right, rgba(255, 122, 48, 0.1), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(23, 109, 105, 0.1), transparent 34%),
+    linear-gradient(180deg, rgba(255, 250, 243, 0.92), rgba(255, 250, 243, 0.82));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.how-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(17, 32, 48, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 32, 48, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.55;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 90%);
+}
+
+.how-slide > * {
+  position: relative;
+  z-index: 1;
+}
+
+.how-slide-hero {
+  background:
+    radial-gradient(circle at top right, rgba(255, 122, 48, 0.18), transparent 30%),
+    radial-gradient(circle at 12% 88%, rgba(23, 109, 105, 0.18), transparent 28%),
+    linear-gradient(180deg, rgba(255, 250, 243, 0.96), rgba(255, 250, 243, 0.88));
+}
+
+.how-slide-dark {
+  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(255, 122, 48, 0.22), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(23, 109, 105, 0.2), transparent 32%),
+    linear-gradient(140deg, rgba(12, 20, 30, 0.96), rgba(17, 32, 48, 0.92));
+}
+
+.how-slide-dark::after {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  opacity: 0.18;
+}
+
+.how-float-card {
+  animation: how-float 7s ease-in-out infinite;
+}
+
+.how-stage-card {
+  position: relative;
+}
+
+.how-stage-card::before {
+  content: "";
+  position: absolute;
+  inset: auto 18px -1px 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(17, 32, 48, 0.18),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.how-wave-bar {
+  display: inline-block;
+  animation: how-wave 1.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.how-wave-bar:nth-child(2n) {
+  animation-delay: 0.16s;
+}
+
+.how-wave-bar:nth-child(3n) {
+  animation-delay: 0.32s;
+}
+
+.how-faq-item {
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.how-faq-item[open] {
+  border-color: rgba(255, 122, 48, 0.26);
+  box-shadow: 0 18px 50px rgba(24, 39, 58, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.how-faq-summary {
+  position: relative;
+}
+
+.how-faq-summary::after {
+  content: "+";
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.how-faq-item[open] .how-faq-summary::after {
+  content: "-";
+}
+
+@keyframes how-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes how-wave {
+  0%,
+  100% {
+    transform: scaleY(0.82);
+  }
+
+  50% {
+    transform: scaleY(1.08);
+  }
+}
